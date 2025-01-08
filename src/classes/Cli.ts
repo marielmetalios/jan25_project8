@@ -181,10 +181,24 @@ class Cli {
         },
       ])
       .then((answers) => {
-        // TODO: Use the answers object to pass the required properties to the Truck constructor
-        // TODO: push the truck to the vehicles array
-        // TODO: set the selectedVehicleVin to the vin of the truck
-        // TODO: perform actions on the truck
+        // TODO: DONE -- Use the answers object to pass the required properties to the Truck constructor
+        const truck = new Truck(
+        Cli.generateVin(),
+        answers.color,
+        answers.make,
+        answers.model,
+        parseInt(answers.year),
+        parseInt(answers.weight),
+        parseInt(answers.topSpeed),
+        parseInt(answers.towingCapacity),
+        []
+      );
+        // TODO: DONE -- push the truck to the vehicles array
+        this.vehicles.push(truck);
+        // TODO: DONE -- set the selectedVehicleVin to the vin of the truck
+        this.selectedVehicleVin = truck.vin;
+        // TODO: DONE -- perform actions on the truck
+        this.performActions();
       });
   }
 
@@ -244,10 +258,23 @@ class Cli {
         },
       ])
       .then((answers) => {
-        // TODO: Use the answers object to pass the required properties to the Motorbike constructor
+        // TODO: DONE -- Use the answers object to pass the required properties to the Motorbike constructor
+        const motorbike = new Motorbike (
+        answers.color,
+        answers.make,
+        answers.model,
+        answers.year,
+        parseInt(answers.weight),
+        parseInt(answers.topSpeed),
+        parseInt(answers.wheels),
+        []
+        );
         // TODO: push the motorbike to the vehicles array
+        this.vehicles.push(motorbike);
         // TODO: set the selectedVehicleVin to the vin of the motorbike
+        this.selectedVehicleVin = motorbike.vin;
         // TODO: perform actions on the motorbike
+        this.performActions();
       });
   }
 
