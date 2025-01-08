@@ -45,7 +45,6 @@ class Truck extends Vehicle {
     this.weight = weight;
     this.topSpeed = topSpeed;
     this.towingCapacity = towingCapacity;
-    // TODO: The constructor should check if the wheels array has 2 elements and create 2 new default Wheel objects if it does not
       if (wheels.length !== 4) {
         this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
       } else {
@@ -53,17 +52,25 @@ class Truck extends Vehicle {
       }
   }
   }
-  
-
-
 
   // TODO: Implement the tow method from the AbleToTow interface
   tow(vehicle: Truck | Motorbike | Car): void {
+
+
     // TODO: Get the make an model of the vehicle if it exists
+    tow(Truck): void {
+      if (vehicle.make !== []) {
+        return Vehicle.make;
+    }
     // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
     // TODO: If it is, log that the vehicle is being towed
     // TODO: If it is not, log that the vehicle is too heavy to be towed
-  }
+    if (this.weight <= this.towingCapacity) {
+      return `${this.make} is being towed`;
+    } else {
+      return `${this.make} truck is too heavy to be towed`;
+    };
+  };
 
   // TODO: Override the printDetails method from the Vehicle class
     // TODO: The method should call the printDetails method of the parent class
