@@ -5,6 +5,7 @@ import Wheel from './Wheel.js';
 // TODO: The Motorbike class should extend the Vehicle class
 class Motorbike extends Vehicle {
   // TODO: Declare properties of the Motorbike class
+  // shouldnt the wheelie method be imported? it's throwing an error;
   // TODO: The properties should include vin, color, make, model, year, weight, top speed, and wheels
   // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[])
   vin: string;
@@ -30,7 +31,7 @@ constructor (
   wheels: Wheel[], 
 ){
   super();
-// does super's type need to be defined? super: boolean / number?
+// does super's type need to be defined? 
 
 // TODO: The constructor should initialize the properties of the Motorbike class
   this.vin = vin;
@@ -44,27 +45,37 @@ constructor (
     if (wheels.length !== 2) {
       this.wheels = [new Wheel(), new Wheel()];
     } else {
-      this.wheels=wheels;
+      this.wheels = wheels;
     }
 }
-}
+
 
   // TODO: Implement the wheelie method
   // TODO: The method should log the message "Motorbike [make] [model] is doing a wheelie!"
+  // Do i need to override wheelie?
 
-  wheelie(): string {
-    console.log(`Motorbike ${this.make} ${this.model} is doing a wheelie!`;
-  };
-
-
+  wheelie(): void {
+    console.log(`Motorbike ${this.make} ${this.model} is doing a wheelie!`);
+  
   // TODO: Override the printDetails method from the Vehicle class
   // TODO: The method should call the printDetails method of the parent class
   // TODO: The method should log the details of the Motorbike
   override printDetails(): void {
-    return super.printDetails();
-  }
-
+    super.printDetails();
   // TODO: The details should include the VIN, make, model, year, weight, top speed, color, and wheels
+  console.log(`VIN: ${this.vin}`);
+  console.log(`Make: ${this.make}`);
+  console.log(`Model: ${this.model}`);
+  console.log(`Year: ${this.year}`);
+  console.log(`Weight: ${this.weight} lbs`);
+  console.log(`Top Speed: ${this.topSpeed} mph`);
+  console.log(`Color: ${this.color}`);
+  console.log(`Wheels: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`;
+  console.log(`Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`);
+  }
+};
+  
+// QUESTION: shouldn't we need an i here instead of a 0?
 
 
 // Export the Motorbike class as the default export

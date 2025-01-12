@@ -71,15 +71,15 @@ class towVehicle implements AbleToTow {
     // TODO: NOT DONE!!!! Get the make an model of the vehicle if it exists
     // mar notes -- make is a string, can check if length > 0? OR can i call from new const truck1?
     if (this.make && this.model) {
-      console.log (`Vehicle make is ${Vehicle.make} and model is ${Vehicle.model}`);
+      console.log (`Vehicle make is ${this.make} and model is ${this.model}`);
     }
     // TODO: NOT DONE!!! Check if the vehicle's weight is less than or equal to the truck's towing capacity
     // TODO: If it is, log that the vehicle is being towed
     // TODO: If it is not, log that the vehicle is too heavy to be towed
-    if (vehicles..weight <= Vehicle.towingCapacity) {
-      return `${Vehicle.make} is being towed`;
+    if (this.weight <= this.towingCapacity) {
+      return `${this.make} is being towed`;
     } else {
-      return `${Vehicle.make} truck is too heavy to be towed`;
+      return `${this.make} truck is too heavy to be towed`;
     };
   
   // TODO: NOT DONE!!! Override the printDetails method from the Vehicle class

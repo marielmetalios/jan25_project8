@@ -80,15 +80,16 @@ class Vehicle implements Driveable {
 
   tow(): void {
     // Check if the vehicle is towed
-    if (this.started) {
-      console.log('Vehicle towed');
+    if (this.currentSpeed = 0;
+    this.started = false) {      
+    console.log('Vehicle towed');
     } else {
       console.log('Stop the car');
     }
   }
 
   wheelie(): void {
-    // Check if the vehicle is towed
+    // 
     if (this.started = false) {
       console.log('Vehicle popping a wheelie');
     } else {
