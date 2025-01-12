@@ -73,7 +73,31 @@ class Vehicle implements Driveable {
       console.log('Start the vehicle first');
     }
   }
+
+// _______________________
+// mar added tow and wheelie methods
+// Method to reverse the vehicle
+
+  tow(): void {
+    // Check if the vehicle is towed
+    if (this.started) {
+      console.log('Vehicle towed');
+    } else {
+      console.log('Stop the car');
+    }
+  }
+
+  wheelie(): void {
+    // Check if the vehicle is towed
+    if (this.started = false) {
+      console.log('Vehicle popping a wheelie');
+    } else {
+      console.log(`Go pop a wheelie!`);
+    }
+  }
 }
+
+
 
 
 // Export the Vehicle class
