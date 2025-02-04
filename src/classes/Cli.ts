@@ -196,8 +196,9 @@ class Cli {
         parseInt(answers.year),
         parseInt(answers.weight),
         parseInt(answers.topSpeed),
+        [],
         parseInt(answers.towingCapacity),
-        []
+
       );
         // TODO: DONE -- push the truck to the vehicles array
         this.vehicles.push(truck);
@@ -287,7 +288,7 @@ class Cli {
 
   // method to find a vehicle to tow
   // TODO: NOT DONE!!!!!!! add a parameter to accept a truck object
-  findVehicleToTow(truck: String): void {
+  findVehicleToTow(truck: Truck): void {
     inquirer
       .prompt([
         {
@@ -304,7 +305,7 @@ class Cli {
       ])
       .then((answers) => {
         // TODO: DONE -- BUT not sure if correct? Check if the selected vehicle is the truck
-        if (this.selectedVehicleVin === 'truck') {
+        if (this.selectedVehicleVin === truck.vin) {
         // TODO: DONE -- BUT not sure if correct? if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
         console.log(`The truck cannot tow itself`);  
         this.performActions()
@@ -342,7 +343,7 @@ class Cli {
           ],
         },
       ])
-      .then((answers) => {
+      .then((answers)  => {
         // perform the selected action
         if (answers.action === 'Print details') {
           // find the selected vehicle and print its details
@@ -401,23 +402,37 @@ class Cli {
             }
           }
         }
-        // TODO: DONE -- and I added tow and wheelie methods! Add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
-        else if (answers.action === 'Tow' && this.selectedVehicleVin === 'Truck') {
+        // TODO: Add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
+        else if (answers.action === 'Tow') {
+          let truck: Truck | undefined
           for (let i=0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
-             this.vehicles[i].tow();
+            if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Truck) {
+          truck = this.vehicles[i] as Truck;
             }
           }
+          if (truck) {
+            this.findVehicleToTow(truck);
+            return;
+          } else {
+            console.log(`You can only tow with a truck`);
+          }
         }
+
+
         // TODO: DONE -- add statements to perform the wheelie action only if the selected vehicle is a motorbike
-        else if (answers.action === 'Pop a wheelie' || this.selectedVehicleVin === 'Motorcyle') {
+        else if (answers.action === 'Pop a wheelie' || this.selectedVehicleVin === 'Motorbike') {
+          let motorbike: Motorbike | undefined
           for (let i=0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
-              this.vehicles[i].wheelie();
+            if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
+            motorbike = this.vehicles[i] as Motorbike;
             }
           }
-        }
-        else if (answers.action === 'Select or create another vehicle') {
+         if (motorbike) {
+          motorbike.wheelie()
+         } else {
+          console.log('You need a motorbike to pop a wheelie');
+         }
+        } else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
           this.startCli();
           return;
@@ -457,3 +472,4 @@ class Cli {
 
 // export the Cli class
 export default Cli;
+
