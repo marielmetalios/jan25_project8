@@ -12,7 +12,7 @@ This project was created for Columbia Bootcamp, Module 8 Challenge:
 ## Demo
 
 Link to video walkthrough: 
-* [https://github.com/marielmetalios/jan25_project8](https://github.com/marielmetalios/jan25_project8)
+* [https://drive.google.com/file/d/1fz3sD64v1SvwxKPC5hGlJof_ppjTbfuJ/view?usp=drive_link](https://github.com/marielmetalios/jan25_project8](https://drive.google.com/file/d/1fz3sD64v1SvwxKPC5hGlJof_ppjTbfuJ/view?usp=drive_link))
 
 
 <!-- CONTACT -->
